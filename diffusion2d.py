@@ -38,6 +38,11 @@ class SolveDiffusion2D:
         self.dt = None
 
     def initialize_domain(self, w=10., h=10., dx=0.1, dy=0.1):
+        assert type(w) is float, "Width of the domain must be a float"
+        assert type(h) is float, "Height of the domain must be a float"
+        assert type(dx) is float, "dx must be a float"
+        assert type(dy) is float, "dy must be a float"
+
         self.w = w
         self.h = h
         self.dx = dx
@@ -45,7 +50,12 @@ class SolveDiffusion2D:
         self.nx = int(w / dx)
         self.ny = int(h / dy)
 
-    def initialize_physical_parameters(self, d=4., T_cold=300, T_hot=700):
+    def initialize_physical_parameters(self, d=4., T_cold=300., T_hot=700.):
+
+        assert type(d) is float, "Thermal diffusivity must be a float"
+        assert type(T_cold) is float, "Initial cold temperature must be a float"
+        assert type(T_hot) is float, "Initial hot temperature must be a float"
+
         self.D = d
         self.T_cold = T_cold
         self.T_hot = T_hot
@@ -55,6 +65,7 @@ class SolveDiffusion2D:
         self.dt = dx2 * dy2 / (2 * self.D * (dx2 + dy2))
 
         print("dt = {}".format(self.dt))
+
 
     def set_initial_condition(self):
         u = self.T_cold * np.ones((self.nx, self.ny))
