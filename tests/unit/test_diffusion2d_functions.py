@@ -12,18 +12,18 @@ def test_initialize_domain():
     Check function SolveDiffusion2D.initialize_domain
     """
     solver = SolveDiffusion2D()
-    w = 2.0
+    w = 1.0
     h = 2.0
     dx = 0.19
-    dy = 0.19
+    dy = 0.09
     solver.initialize_domain(w, h, dx, dy)
 
-    assert (solver.w == 2.0)
+    assert (solver.w == 1.0)
     assert (solver.h == 2.0)
     assert (solver.dx == 0.19)
-    assert (solver.dy == 0.19)
-    assert (solver.nx == 10)
-    assert (solver.ny == 10)
+    assert (solver.dy == 0.09)
+    assert (solver.nx == 5)
+    assert (solver.ny == 22)
 
 
 def test_initialize_physical_parameters():
